@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        {% include "components/common_header_bits.html" %}
+    </head>
+    <body>
+        <h1>The Blog</h1>
+        {% for post in posts | sort(attribute="woa_time") | reverse %}
+        <div class="blog-post">
+            <div class="post-header">
+                <div class="time">{{ post.woa_time }}</div>
+                <div class="title">{{ post.title }}</div>
+            </div>
+            <div class="post-content">
+                {% for paragraph in post.content %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+        </div>
+        {% endfor %} {% include "components/footer.html" -%}
+    </body>
+</html>

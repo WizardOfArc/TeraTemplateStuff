@@ -1,0 +1,19 @@
+{
+    "members" : [
+        {
+            "name": "Azi",
+            "instruments": ["voice", "guitar", "bass"],
+            "img": "/images/sticker_azi.png"
+        },
+        {
+            "name": "Doug",
+            "instruments": ["synth", "bass synth", "voice"],
+            "img": "/images/sticker_doug.png"
+        },
+        {
+            "name": "Nik",
+            "instruments": ["saxophone", "drums", "voice"],
+            "img": "/images/sticker_nik.png"
+        }
+    ]
+}

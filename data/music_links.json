@@ -1,0 +1,24 @@
+{
+    "music_links": [
+        {
+            "label": "WizardOfArc's YouTube",
+            "url": "https://www.youtube.com/@wizardofarcband",
+            "thumbnail": "https://yt3.googleusercontent.com/EK3A977fnTAAIft0Dyb5boXOW5AQdbozALVWXfUPx_nmUdvRIOBktLaHBc84FZMR77x0rWgnFw=s160-c-k-c0x00ffffff-no-rj"
+        },
+        {
+            "label": "WizardOfArc's Instagram",
+            "url":"https://www.instagram.com/wizardofarcmusic?igsh=MXJ1a29odmYydXF3Yw%3D%3D&utm_source=qr",
+            "thumbnail": "/images/Instagram_logo_2022.svg"
+        },
+        {
+            "label": "Azi's YouTube",
+            "url": "https://www.youtube.com/@WizardOfArc",
+            "thumbnail": "https://yt3.ggpht.com/ytc/AIdro_mHtRfsRgyWVF8xQ5oSi2RKp0FgPgbvry9RjS7Qe_T7bnA=s600-c-k-c0x00ffffff-no-rj-rp-mo"
+        },
+        {
+            "label": "Azi's Spotify",
+            "url": "https://open.spotify.com/playlist/4X72jWre06tIx3LDzQgbSd?si=37c7af57bb254d59",
+            "thumbnail":"https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+        }
+    ]
+}
