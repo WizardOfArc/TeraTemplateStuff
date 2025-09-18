@@ -1,1 +1,3 @@
-# Repo fro trying out Tera Templates and maybe using them for templates for WizardOfArc git hub pages
+# Repo for trying using Tera Templates
+
+## using them for templates for WizardOfArc git hub pages
