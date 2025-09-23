@@ -1,22 +1,25 @@
-<!doctype html>
-<html>
-    <head>
-        {% include "components/common_header_bits.html" %}
-    </head>
-    <body>
-        <h1>The Blog</h1>
+{% include "components/open_boiler_plate.html" %}
+        <div class="blog-header">
+          <div id="woa_logo" class="header-image"></div>
+            <h1 class="blog-title">The Arcane Chronicles</h1>
+        </div>
+        
+        <div class="blog-intro">
+            <p>Welcome to my digital thought collection, where code meets creativity and music intertwines with magic.</p>
+        </div>
+        <div id="blog-posts" class="posts-container">
         {% for post in posts | sort(attribute="woa_time") | reverse %}
         <div class="blog-post">
             <div class="post-header">
-                <div class="time">{{ post.woa_time }}</div>
-                <div class="title">{{ post.title }}</div>
+                <div class="post-title">{{ post.title }}</div>
+                <div class="post-date">{{ post.woa_time }}</div>
             </div>
             <div class="post-content">
                 {% for paragraph in post.content %}
-                <p>{{ paragraph }}</p>
+                <p>{{ paragraph | safe}}</p>
                 {%- endfor %}
             </div>
         </div>
-        {% endfor %} {% include "components/footer.html" -%}
-    </body>
-</html>
+        {% endfor %} 
+        </div>
+{% include "components/close_boiler_plate.html" %}

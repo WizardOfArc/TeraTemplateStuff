@@ -1,10 +1,10 @@
 <div class="footer">
-    <a href="/index.html">
+    <a href="/">
         <div class="woa-home-button"></div>
     </a>
     <ul>
         {%- for link in footer_links %}
-        <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+        <li><a class="footer-link" href="{{ link.url }}">{{ link.label }}</a></li>
         {%- endfor %}
     </ul>
 </div>

@@ -1,0 +1,17 @@
+[
+  {
+    "template": "index.html",
+    "context_json_file": "index.json",
+    "render_target": "output/index.html"
+  },
+  {
+    "template": "blog.html",
+    "render_target": "output/blog.html",
+    "context_json_file": "blog_posts.json"
+  },
+  {
+    "template": "grimoire.html",
+    "render_target": "output/grimoire.html",
+    "context_json_file": "spells.json"
+  }
+]

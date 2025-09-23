@@ -1,8 +1,13 @@
 {
   "page": { "title": "Woa Blog", "css": "blog" },
   "footer_links": [
-    { "url": "/index.html", "label": "Home" },
-    { "url": "/blog.html", "label": "WoA Blog" }
+    {"label": "About", "url": "/about.html"},
+    {"label": "Music", "url": "/music.html"},
+    {"label": "Pitch Table", "url": "/pitch_table.html"},
+    {"label": "The Grimoire", "url": "/grimoire.html"},
+    {"label": "Friends", "url": "/friends.html"},
+    {"label": "Contact", "url": "/contact.html"},
+    {"label": "Time", "url": "/time.html"}
   ],
   "posts": [
     {
@@ -64,7 +69,7 @@
       "woa_time": "2024:11:20:12:21:32",
       "title": "First Blog Entry From File",
       "content": [
-        "So here I am trying to add support for writing blog entries as simple text files. The idea here is that this will allow to also write in ways where I can correct my spelling and other errors before submitting. Have a function for adding a Post inline <em>AND</em> via a file allows for greator flexibility.",
+        "So here I am trying to add support for writing blog entries as simple text files. The idea here is that this will allow to also write in ways where I can correct my spelling and other errors before submitting. Have a function for adding a Post inline <em>and</em> via a file allows for greator flexibility.",
         "I may use this approach for creating Wizard Of Aarc's Grimoire. My collection of tips, reflections, and epiphanies for all things music and music related. Whether or not the blog becomes the Grimoire is another question altogether.",
         "How does this look?"
       ]

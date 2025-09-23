@@ -1,63 +1,144 @@
+use serde::Deserialize;
 use serde_json::Value;
+use std::env;
+use std::fmt;
 use std::fs;
 use tera::{Context, Tera};
 
+#[derive(Debug)]
+enum PageMappingError {
+    UnableToRead(String),
+    UnableToParse(String),
+}
+
+impl fmt::Display for PageMappingError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            PageMappingError::UnableToRead(message) => {
+                write!(f, "Could not read mapping file: {}", message)
+            }
+            PageMappingError::UnableToParse(message) => {
+                write!(f, "Could not parse JSON into Page Mapping: {}", message)
+            }
+        }
+    }
+}
+
+#[derive(Deserialize)]
 struct PageMapping {
     template: String,
     render_target: String,
     context_json_file: String,
 }
 
+#[derive(Debug)]
+enum TemplateRenderError {
+    UnableToReadDataFile(String),
+    UnableToParseDataJson(String),
+    UnableToRenderTemplate(String),
+    UnableToBeWriteRenderedFile(String),
+    UnableToCreateContext(String),
+}
+
+impl fmt::Display for TemplateRenderError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            TemplateRenderError::UnableToBeWriteRenderedFile(message) => {
+                write!(f, "Could not write rendered template: {}", message)
+            }
+            TemplateRenderError::UnableToParseDataJson(message) => {
+                write!(f, "JSON could not be parsed: {}", message)
+            }
+            TemplateRenderError::UnableToReadDataFile(message) => {
+                write!(f, "JSON file could not be read: {}", message)
+            }
+            TemplateRenderError::UnableToRenderTemplate(message) => {
+                write!(f, "Template could not be rendered: {}", message)
+            }
+            TemplateRenderError::UnableToCreateContext(message) => {
+                write!(
+                    f,
+                    "Tera Context unable to be created from the JSON: {}",
+                    message
+                )
+            }
+        }
+    }
+}
+
+fn render_template(
+    mapping: &PageMapping,
+    tera: &Tera,
+    target_dir: &str,
+    data_dir: &str,
+) -> Result<(), TemplateRenderError> {
+    println!(
+        "Read from {} and {} and write to {}",
+        mapping.template, mapping.context_json_file, mapping.render_target
+    );
+    let file_path = format!("{}/{}", data_dir, mapping.context_json_file);
+    let json_string = fs::read_to_string(&file_path)
+        .map_err(|e| TemplateRenderError::UnableToReadDataFile(e.to_string()))?;
+    let json_value: Value = serde_json::from_str(&json_string)
+        .map_err(|e| TemplateRenderError::UnableToParseDataJson(e.to_string()))?;
+    let ctx = Context::from_value(json_value)
+        .map_err(|e| TemplateRenderError::UnableToCreateContext(e.to_string()))?;
+    let rendered_output = tera
+        .render(&mapping.template, &ctx)
+        .map_err(|e| TemplateRenderError::UnableToRenderTemplate(e.to_string()))?;
+    let target_path = format!("{}/{}", target_dir, mapping.template);
+    fs::write(&target_path, rendered_output)
+        .map_err(|e| TemplateRenderError::UnableToBeWriteRenderedFile(e.to_string()))
+}
+
+fn load_page_mapping(data_dir: &str) -> Result<Vec<PageMapping>, PageMappingError> {
+    let mapping_file_path = format!("{}/page_mappings.json", data_dir);
+    let mapping_json_string = fs::read_to_string(&mapping_file_path)
+        .map_err(|e| PageMappingError::UnableToRead(e.to_string()))?;
+    let mappings: Vec<PageMapping> = serde_json::from_str(&mapping_json_string)
+        .map_err(|e| PageMappingError::UnableToParse(e.to_string()))?;
+    Ok(mappings)
+}
+
 fn main() {
-    println!("Hello, world!");
-    use std::env;
-    println!("Current working directory: {:?}", env::current_dir());
-    let templates_dir = std::env::var("TERA_TEMPLATES").expect("TERA_TEMPLATES must be set");
+    let templates_dir = env::var("TERA_TEMPLATES").expect("TERA_TEMPLATES must be set");
     let template_blob = format!("{}/**/*.html", templates_dir);
-    let data_dir = std::env::var("WOA_DATA_DIR").expect("WOA_DATA_DIR must be set");
+    let data_dir = env::var("WOA_DATA_DIR").expect("WOA_DATA_DIR must be set");
+    let target_dir = env::var("WOA_TARGET_DIR").expect("WOA_TARGET_DIR must be set");
     let tera = match Tera::new(&template_blob) {
         Ok(t) => t,
         Err(e) => {
-            println!("Parsing error(s): {}", e);
-            ::std::process::exit(1);
+            println!("Tera Parsing error(s): {}", e);
+            std::process::exit(1);
         }
     };
-    println!("Parsed Templates:");
+    println!("Registered Templates:");
     for name in tera.get_template_names() {
         println!("{}", name);
     }
-    let mappings: Vec<PageMapping> = vec![
-        PageMapping {
-            template: "index.html".to_string(),
-            context_json_file: "index.json".to_string(),
-            render_target: "output/index.html".to_string(),
-        },
-        PageMapping {
-            template: "blog.html".to_string(),
-            render_target: "output/blog.html".to_string(),
-            context_json_file: "blog_posts.json".to_string(),
-        },
-    ];
+    println!("--------\n");
+    let mappings: Vec<PageMapping> = match load_page_mapping(&data_dir) {
+        Ok(parsed) => parsed,
+        Err(e) => {
+            eprintln!("Error loading mapping: {}", e);
+            std::process::exit(1);
+        }
+    };
+
     for mapping in mappings.iter() {
-        println!(
-            "Read from {} and {} and write to {}",
-            mapping.template, mapping.context_json_file, mapping.render_target
-        );
-        let file_path = format!("{}/{}", data_dir, mapping.context_json_file);
-        let json_string = match fs::read_to_string(&file_path) {
-            Ok(content) => content,
+        match render_template(mapping, &tera, &target_dir, &data_dir) {
+            Ok(_) => println!(
+                "{} rendered to {} ok",
+                mapping.template, mapping.render_target
+            ),
             Err(e) => {
-                eprintln!("Error reading file {}: {}", file_path, e);
-                std::process::exit(1);
+                println!(
+                    "!!!! <<< {} FAILED to render: {} >>> !!!!!",
+                    mapping.template, e
+                );
+                break;
             }
-        };
-        let json_value: Value = serde_json::from_str(&json_string).unwrap();
-        let ctx = Context::from_value(json_value).unwrap();
-        let rendered_output = tera.render(&mapping.template, &ctx).unwrap();
-        println!(
-            "write {} to the file {}",
-            rendered_output, mapping.render_target
-        );
+        }
     }
     // TODO: write to file
 }

@@ -1,10 +1,4 @@
-{
-  "page": {
-    "title": "Wizard Of Arc",
-    "css": "index"
-  },
-  "headline": "Weaving The Threads of Chaos into The Cozy Blanket that is Music",
-  "footer_links": [
+[
   {"label": "About", "url": "/about.html"},
   {"label": "Music", "url": "/music.html"},
   {"label": "Pitch Table", "url": "/pitch_table.html"},
@@ -13,5 +7,4 @@
   {"label": "Friends", "url": "/friends.html"},
   {"label": "Contact", "url": "/contact.html"},
   {"label": "Time", "url": "/time.html"}
-  ]
-}
+]

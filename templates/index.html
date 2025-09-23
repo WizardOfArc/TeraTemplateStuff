@@ -1,9 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        {{ __tera_context }} {% include "components/common_header_bits.html" %}
-    </head>
-    <body>
-        {% include "components/footer.html" -%}
-    </body>
-</html>
+{% include "components/open_boiler_plate.html" %}
+    <div class="header-image" id="woa_logo"></div>
+    <div class="header-image" id="woa_words" alt="WizardOfArc Words"></div>
+    <h1 class="subtitle">{{ headline }}</h1>
+{% include "components/close_boiler_plate.html" %}

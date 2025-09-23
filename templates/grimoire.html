@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        {% include "components/common_header_bits.html" %}
+    </head>
+    <body>
+        <h1>The Grimoire</h1>
+        <p class="the-spells-headline">The Spells: </p>
+        <div class="the-spells">
+            {% for spell in spells %}
+            <a href="/spells/{{ spell.link }}.html">
+                <div class="spell">
+                    <div class="spell-name">{{ spell.name }}</div>
+                    <div class="spell-description">{{ spell.description }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% include "components/footer.html" -%}
+    </body>
+</html>
