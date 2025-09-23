@@ -1,0 +1,15 @@
+{% include "components/open_boiler_plate.html" %}
+<h1>Ogham</h1>
+<div class="ogham-container">
+{%- for aicme in groups %}
+<div class="aicme">
+  {%- for letter in aicme %}
+  <div class="letter">
+    <span class="latin">{{ letter.latin }}:</span><span class="ogham">{{ letter.ogham | safe }}</span>
+  </div>
+  {%- endfor %}
+</div>
+{%- endfor %}
+</div>
+
+{% include "components/close_boiler_plate.html" %}

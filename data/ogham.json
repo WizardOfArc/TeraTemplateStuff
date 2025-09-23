@@ -1,0 +1,48 @@
+{
+  "page": { "title": "Ogham", "css": "ogham" },
+  "footer_links": [
+    {"label": "About", "url": "/about.html"},
+    {"label": "Music", "url": "/music.html"},
+    {"label": "Pitch Table", "url": "/pitch_table.html"},
+    {"label": "The Grimoire", "url": "/grimoire.html"},
+    {"label": "Friends", "url": "/friends.html"},
+    {"label": "Contact", "url": "/contact.html"},
+    {"label": "Time", "url": "/time.html"}
+  ],
+  "groups": [
+    [
+      {"latin": "b", "ogham":"&#x1681;"},
+      {"latin": "l", "ogham": "&#x1682;"},
+      {"latin": "f", "ogham": "&#x1683;"},
+      {"latin": "s", "ogham": "&#x1684;"},
+      {"latin": "n", "ogham": "&#x1685;"}
+    ],
+    [
+      {"latin": "h", "ogham": "&#x1686;"},
+      {"latin": "d", "ogham": "&#x1687;"},
+      {"latin": "t", "ogham": "&#x1688;"},
+      {"latin": "c", "ogham": "&#x1689;"},
+      {"latin": "q", "ogham": "&#x168a;"}
+    ],
+    [
+      {"latin": "m", "ogham": "&#x168b;"},
+      {"latin": "g", "ogham": "&#x168c;"},
+      {"latin": "ng", "ogham": "&#x168d;"},
+      {"latin": "st", "ogham": "&#x168e;"},
+      {"latin": "r", "ogham": "&#x168f;"}
+    ],
+    [
+      {"latin": "a", "ogham": "&#x1690;"},
+      {"latin": "o", "ogham": "&#x1691;"},
+      {"latin": "u", "ogham": "&#x1692;"},
+      {"latin": "e", "ogham": "&#x1693;"},
+      {"latin": "i", "ogham": "&#x1694;"}
+    ],
+    [
+      {"latin": "p", "ogham": "&#x169a;"},
+      {"latin": ">-", "ogham": "&#x169b;"},
+      {"latin": "-<", "ogham": "&#x169c;"},
+      {"latin": "space", "ogham": "&#x1680;"}
+    ]
+  ]
+}
