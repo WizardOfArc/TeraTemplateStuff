@@ -5,6 +5,8 @@ use std::fmt;
 use std::fs;
 use tera::{Context, Tera};
 
+mod tera_filters;
+
 #[derive(Debug)]
 enum PageMappingError {
     UnableToRead(String),
@@ -105,13 +107,14 @@ fn main() {
     let template_blob = format!("{}/**/*.html", templates_dir);
     let data_dir = env::var("WOA_DATA_DIR").expect("WOA_DATA_DIR must be set");
     let target_dir = env::var("WOA_TARGET_DIR").expect("WOA_TARGET_DIR must be set");
-    let tera = match Tera::new(&template_blob) {
+    let mut tera = match Tera::new(&template_blob) {
         Ok(t) => t,
         Err(e) => {
             println!("Tera Parsing error(s): {}", e);
             std::process::exit(1);
         }
     };
+    tera.register_filter("ogham", tera_filters::to_ogham);
     println!("Registered Templates:");
     for name in tera.get_template_names() {
         println!("{}", name);

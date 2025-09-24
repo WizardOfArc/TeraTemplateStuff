@@ -1,0 +1,87 @@
+{% include "components/open_boiler_plate.html" %}
+<div id="clock">
+  <span id="year"></span>
+  <span id="month"></span>
+  <span id="day"></span>
+  <span id="hour"></span>
+  <span id="minute"></span>
+  <span id="second"></span>
+</div>
+<div id="countdown-container">
+  {%- for countdown in countdowns %}
+  <div id="{{ countdown.label }}-countdown">
+    <span class="ogham">{{ countdown.gaeilge | ogham | safe }}</span><span id="{{ countdown.label }}-days"></span>
+  </div>
+  {%- endfor %}
+</div>
+<script>
+  // define some bits:
+  let countDowns = [
+  {% for countdown in countdowns %}
+      {
+        target: document.querySelector("#{{ countdown.label }}-days"),
+        deadline: new Date("{{ countdown.deadline }}")
+      }{% if not loop.last %},{% endif %}
+  {% endfor %}
+  ];
+
+  let year = document.querySelector("#year");
+  let month =document.querySelector("#month");
+  let day =document.querySelector("#day");
+  let hour =document.querySelector("#hour");
+  let minute =document.querySelector("#minute");
+  let second =document.querySelector("#second");
+
+function update_countdown(days_element, deadline, now){
+  let millisInASecond = 1000;
+  let millisInAMinute = 60 * millisInASecond;
+  let millisInAnHour = 60 * millisInAMinute;
+  let millisInADay = 24 * millisInAnHour;
+  let timeDiff = deadline - now;
+  if (timeDiff < 0) {
+    days_element.innerHTML = "Done";
+    return;
+  }
+  let days = Math.floor(timeDiff / millisInADay);
+  days_element.innerHTML = days;
+}
+
+function update_clock(y, mo, d, h, min, s, now) {
+      let day = now.getDate();
+      let hours = now.getHours();
+      if (hours < 10) {
+        hours = `0${hours}`;
+      }
+      let minutes = now.getMinutes();
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+      let seconds = now.getSeconds();
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      if (month < 10) {
+        month = `0${month}`;
+      }
+    y.innerHTML = year;
+    mo.innerHTML = month;
+    d.innerHTML = day;
+    h.innerHTML = hours;
+    min.innerHTML = minutes;
+    s.innerHTML = seconds;
+}
+
+function tick() {
+    let now = new Date();
+    // clock bits:
+    update_clock(year, month, day, hour, minute, second, now);
+    countDowns.forEach((cd) => {
+        update_countdown(cd.target, cd.deadline, now);
+    });
+}
+
+setInterval(tick, 1000);
+</script>
+{% include "components/close_boiler_plate.html" %}

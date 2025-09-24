@@ -14,6 +14,10 @@
     "render_target": "output/grimoire.html",
     "context_json_file": "spells.json"
   },
+  { "template": "time.html",
+    "render_target": "output/time.html",
+    "context_json_file": "time.json"
+  },
   { "template": "ogham.html",
     "render_target": "output/ogham.html",
     "context_json_file": "ogham.json"

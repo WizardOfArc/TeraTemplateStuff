@@ -1,0 +1,24 @@
+{
+  "page": { "title": "Time Stuff", "css": "time" },
+  "footer_links": [
+    {"label": "About", "url": "/about.html"},
+    {"label": "Blog", "url": "/blog.html"},
+    {"label": "Music", "url": "/music.html"},
+    {"label": "Pitch Table", "url": "/pitch_table.html"},
+    {"label": "The Grimoire", "url": "/grimoire.html"},
+    {"label": "Friends", "url": "/friends.html"},
+    {"label": "Contact", "url": "/contact.html"}
+  ],
+  "countdowns": [
+    {
+      "label": "last_day",
+      "gaeilge":"mo laa deiridh", 
+      "deadline":"2025-11-22T13:00:00Z"
+    },
+    {
+      "label": "dublin",
+      "gaeilge": "laethanta go dtii eitilfimid go baile aatha cliath", 
+      "deadline": "2025-12-03T16:00:00Z"
+    }
+  ]
+}
