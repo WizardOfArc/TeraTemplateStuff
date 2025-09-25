@@ -1,0 +1,35 @@
+{% include "components/open_boiler_plate.html" %}
+        <h1>Diminutions</h1>
+        <div class="content">
+            <div class="description">This is essentiually breaking a longer note into shorter notes. This is really simple in a DAW's piano roll. But still not too hard with western traditional notation. There a few different ways depending on what your needs / desires are.</div>
+            <div class="steps">
+                <ol>
+                    <li>Cut the long note into shorter repeated notes</li>
+                    <li>Move the little notes up or down, leave some in place, and in some cases remove some to make rests or syncopations.</li>
+                    <li>Some common patterns depending on what note follows this original note - but in all cases the first note of the diminution is the same pitch as the original note.
+                        <ul>
+                            <li>If next note is a step above <img src="/images/going_up.svg" alt="going up"> and we are breaking the original note into 4 there are two common patterns:
+                                <ol>
+                                    <li>start note - upper neighbor - lower neighbor - and start note again<img src="/images/four_note_cambiata_up.svg"></li>
+                                    <li>start note - a note a third below - then go up the scale <img src="/images/four_note_third_below.svg"></li>
+                                </ol>
+                            </li>
+                            <li>If next note is a step below <img src="/images/going_down.svg" alt="going down"> and we are breaking the original note into 4 there are two common patterns:
+                                <ol>
+                                    <li>start note - lower neighbor - upper neighbor - and start note again<img src="/images/four_note_cambiata_down.svg"></li>
+                                    <li>start note - a note a third above - then go down the scale<img src="/images/four_note_third_above.svg"></li>
+                                </ol>
+                            </li>
+                            <li>If next note is the same <img src="/images/same_note.svg" alt="same note"> and we are breaking the original note into 4 there are two common patterns:
+                                <ol>
+                                    <li>start note - lower neighbor - the go up the scale <img src="/images/four_notes_down_then_up.svg"></li>
+                                    <li>start note - upper neighbor - then go down the scale <img src="/images/four_notes_up_then_down.svg"></li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+{% include "components/close_boiler_plate.html" %}
+

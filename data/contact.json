@@ -1,0 +1,14 @@
+{
+  "page": {
+    "title": "Contact WizardOfArc",
+    "css": "contact"
+  },
+  "footer_links": [
+    {"label": "About", "url": "/about.html"},
+    {"label": "Music", "url": "/music.html"},
+    {"label": "The Grimoire", "url": "/grimoire.html"},
+    {"label": "Blog", "url": "/blog.html"},
+    {"label": "Friends", "url": "/friends.html"},
+    {"label": "Time", "url": "/time.html"}
+  ]
+}

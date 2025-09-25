@@ -1,25 +1,56 @@
 [
   {
+    "template": "friends.html",
+    "context_json_file": "friends.json"
+  },
+  {
+    "template": "contact.html",
+    "context_json_file": "contact.json"
+  },
+  {
+    "template": "music.html",
+    "context_json_file": "music.json"
+  },
+  {
+    "template": "about.html",
+    "context_json_file": "about.json"
+  },
+  {
     "template": "index.html",
-    "context_json_file": "index.json",
-    "render_target": "output/index.html"
+    "context_json_file": "index.json"
   },
   {
     "template": "blog.html",
-    "render_target": "output/blog.html",
     "context_json_file": "blog_posts.json"
   },
   {
     "template": "grimoire.html",
-    "render_target": "output/grimoire.html",
+    "context_json_file": "grimoire.json"
+  },
+  {
+    "template": "spells/asynchronous_arrangement.html",
+    "context_json_file": "spells.json"
+  },
+  {
+    "template": "spells/craft_and_chaos.html",
+    "context_json_file": "spells.json"
+  },
+  {
+    "template": "spells/diminutions.html",
+    "context_json_file": "spells.json"
+  },
+  {
+    "template": "spells/note_against_note.html",
+    "context_json_file": "spells.json"
+  },
+  {
+    "template": "spells/perpetual_canon.html",
     "context_json_file": "spells.json"
   },
   { "template": "time.html",
-    "render_target": "output/time.html",
     "context_json_file": "time.json"
   },
   { "template": "ogham.html",
-    "render_target": "output/ogham.html",
     "context_json_file": "ogham.json"
   }
 

@@ -5,7 +5,6 @@
     {"label": "About", "url": "/about.html"},
     {"label": "Music", "url": "/music.html"},
     {"label": "Blog", "url": "/blog.html"},
-    {"label": "The Grimoire", "url": "/grimoire.html"},
     {"label": "Friends", "url": "/friends.html"},
     {"label": "Contact", "url": "/contact.html"},
     {"label": "Time", "url": "/time.html"}

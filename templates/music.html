@@ -1,0 +1,15 @@
+{% include "components/open_boiler_plate.html" %}
+      <h1>Music Links</h1>
+        <div id="music-links">
+        {%- for m_link in music_links %}
+          <div class="link-row">
+            <a href="{{ m_link.url }}" target="_blank" class="music-link">
+              {{ m_link.label }}:
+              {%- if m_link.thumbnail %}
+              <img src="{{ m_link.thumbnail }}" class="music-link-thumbnail" />
+              {%- endif %}
+            </a>
+          </div>
+        {%- endfor %}
+        </div>
+{% include "components/close_boiler_plate.html" %}

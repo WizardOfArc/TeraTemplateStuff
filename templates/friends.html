@@ -1,0 +1,20 @@
+{% include "components/open_boiler_plate.html" %}
+    <h1>Friends of The Wizard</h1>
+    <div id="friends-of-woa">
+      {%- for friend in friends %}
+      <a class="friend-link" href="{{ friend.url }}" target="_blank" >
+        <div class="friend-row">
+          <div class="friend-header">
+            <img src="{{ friend.img }}" class="friend-img" />
+            <div class="friend-name">
+              {{ friend.name }}
+            </div>
+          </div>
+          <div class="friend-desc">
+            {{ friend.description }}
+          </div>
+        </div>
+      </a>
+      {%- endfor %}
+    </div>
+{% include "components/close_boiler_plate.html" %}

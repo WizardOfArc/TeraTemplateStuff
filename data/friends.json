@@ -1,0 +1,36 @@
+{
+  "page": {
+    "title": "Friends of The Wizard",
+    "css": "friends"
+  },
+  "footer_links": [
+      {"label": "About", "url": "/about.html"},
+      {"label": "Music", "url": "/music.html"},
+      {"label": "The Grimoire", "url": "/grimoire.html"},
+      {"label": "Blog", "url": "/blog.html"},
+      {"label": "Contact", "url": "/contact.html"},
+      {"label": "Time", "url": "/time.html"}
+    ],
+    "friends": [
+        {
+            "name": "Alchemy Music School",
+            "img": "https://alchemymusicschool.com/wp-content/uploads/2021/04/alchemy_logo_white_015e00820_3982.png",
+            "description": "Remote and in person lessons in voice, guitar, bass, keys, drums, songwriting, band rehearsal, and music production",
+            "url": "https://alchemymusicschool.com"
+        },
+        {
+            "name": "Genevieve Dance",
+            "img": "https://static.wixstatic.com/media/106c75_075e59c8c9f14a4e9bb179e51195d225~mv2.jpg/v1/fill/w_282,h_61,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/106c75_075e59c8c9f14a4e9bb179e51195d225~mv2.jpg",
+            "description": "Dancer, choreographer, and performance artist and open to just about any artistic endeavor.",
+            "url": "https://www.genevievedance.com/"
+        },
+        {
+            "name": "The Anklebiters",
+            "img": "/images/anklebiters_full_band.webp",
+            "description": "The Anklebiters are a Dog Rock band based in Seattle, WA. Skittles, Teddy, and Jake work with their human to write songs about dog life.",
+            "url": "https://biteankles.com"
+        }
+    ]
+}
+
+

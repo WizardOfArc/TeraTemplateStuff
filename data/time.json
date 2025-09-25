@@ -4,7 +4,6 @@
     {"label": "About", "url": "/about.html"},
     {"label": "Blog", "url": "/blog.html"},
     {"label": "Music", "url": "/music.html"},
-    {"label": "Pitch Table", "url": "/pitch_table.html"},
     {"label": "The Grimoire", "url": "/grimoire.html"},
     {"label": "Friends", "url": "/friends.html"},
     {"label": "Contact", "url": "/contact.html"}

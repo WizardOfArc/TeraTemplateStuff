@@ -29,7 +29,6 @@ impl fmt::Display for PageMappingError {
 #[derive(Deserialize)]
 struct PageMapping {
     template: String,
-    render_target: String,
     context_json_file: String,
 }
 
@@ -73,11 +72,7 @@ fn render_template(
     tera: &Tera,
     target_dir: &str,
     data_dir: &str,
-) -> Result<(), TemplateRenderError> {
-    println!(
-        "Read from {} and {} and write to {}",
-        mapping.template, mapping.context_json_file, mapping.render_target
-    );
+) -> Result<String, TemplateRenderError> {
     let file_path = format!("{}/{}", data_dir, mapping.context_json_file);
     let json_string = fs::read_to_string(&file_path)
         .map_err(|e| TemplateRenderError::UnableToReadDataFile(e.to_string()))?;
@@ -87,10 +82,14 @@ fn render_template(
         .map_err(|e| TemplateRenderError::UnableToCreateContext(e.to_string()))?;
     let rendered_output = tera
         .render(&mapping.template, &ctx)
-        .map_err(|e| TemplateRenderError::UnableToRenderTemplate(e.to_string()))?;
+        .map_err(|e| TemplateRenderError::UnableToRenderTemplate(format!("{:?}", e.kind)))?;
     let target_path = format!("{}/{}", target_dir, mapping.template);
-    fs::write(&target_path, rendered_output)
-        .map_err(|e| TemplateRenderError::UnableToBeWriteRenderedFile(e.to_string()))
+    match fs::write(&target_path, rendered_output) {
+        Ok(()) => Ok(target_path),
+        Err(e) => Err(TemplateRenderError::UnableToBeWriteRenderedFile(
+            e.to_string(),
+        )),
+    }
 }
 
 fn load_page_mapping(data_dir: &str) -> Result<Vec<PageMapping>, PageMappingError> {
@@ -128,12 +127,10 @@ fn main() {
         }
     };
 
+    println!("Rendering...");
     for mapping in mappings.iter() {
         match render_template(mapping, &tera, &target_dir, &data_dir) {
-            Ok(_) => println!(
-                "{} rendered to {} ok",
-                mapping.template, mapping.render_target
-            ),
+            Ok(outputted) => println!("{} ok", outputted),
             Err(e) => {
                 println!(
                     "!!!! <<< {} FAILED to render: {} >>> !!!!!",

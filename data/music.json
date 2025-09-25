@@ -1,0 +1,36 @@
+{
+  "page": {
+    "title": "Music",
+    "css": "music"
+  },
+  "footer_links": [
+      {"label": "About", "url": "/about.html"},
+      {"label": "The Grimoire", "url": "/grimoire.html"},
+      {"label": "Blog", "url": "/blog.html"},
+      {"label": "Friends", "url": "/friends.html"},
+      {"label": "Contact", "url": "/contact.html"},
+      {"label": "Time", "url": "/time.html"}
+    ],
+    "music_links": [
+        {
+            "label": "WizardOfArc's YouTube",
+            "url": "https://www.youtube.com/@wizardofarcband",
+            "thumbnail": "/images/WoaYouTube.png"
+        },
+        {
+            "label": "WizardOfArc's Instagram",
+            "url":"https://www.instagram.com/wizardofarcmusic?igsh=MXJ1a29odmYydXF3Yw%3D%3D&utm_source=qr",
+            "thumbnail": "/images/Instagram_logo_2022.svg"
+        },
+        {
+            "label": "Azi's YouTube",
+            "url": "https://www.youtube.com/@WizardOfArc",
+            "thumbnail": "https://yt3.ggpht.com/ytc/AIdro_mHtRfsRgyWVF8xQ5oSi2RKp0FgPgbvry9RjS7Qe_T7bnA=s600-c-k-c0x00ffffff-no-rj-rp-mo"
+        },
+        {
+            "label": "Azi's Spotify",
+            "url": "https://open.spotify.com/playlist/4X72jWre06tIx3LDzQgbSd?si=37c7af57bb254d59",
+            "thumbnail":"https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+        }
+    ]
+}
