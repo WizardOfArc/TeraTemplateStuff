@@ -3,6 +3,7 @@ use serde_json::Value;
 use std::env;
 use std::fmt;
 use std::fs;
+use std::path;
 use tera::{Context, Tera};
 
 mod tera_filters;
@@ -73,7 +74,7 @@ fn render_template(
     target_dir: &str,
     data_dir: &str,
 ) -> Result<String, TemplateRenderError> {
-    let file_path = format!("{}/{}", data_dir, mapping.context_json_file);
+    let file_path = path::Path::new(data_dir).join(&mapping.context_json_file);
     let json_string = fs::read_to_string(&file_path)
         .map_err(|e| TemplateRenderError::UnableToReadDataFile(e.to_string()))?;
     let json_value: Value = serde_json::from_str(&json_string)
@@ -83,9 +84,9 @@ fn render_template(
     let rendered_output = tera
         .render(&mapping.template, &ctx)
         .map_err(|e| TemplateRenderError::UnableToRenderTemplate(format!("{:?}", e.kind)))?;
-    let target_path = format!("{}/{}", target_dir, mapping.template);
+    let target_path = path::Path::new(target_dir).join(&mapping.template);
     match fs::write(&target_path, rendered_output) {
-        Ok(()) => Ok(target_path),
+        Ok(()) => Ok(target_path.display().to_string()),
         Err(e) => Err(TemplateRenderError::UnableToBeWriteRenderedFile(
             e.to_string(),
         )),
@@ -93,7 +94,7 @@ fn render_template(
 }
 
 fn load_page_mapping(data_dir: &str) -> Result<Vec<PageMapping>, PageMappingError> {
-    let mapping_file_path = format!("{}/page_mappings.json", data_dir);
+    let mapping_file_path = path::Path::new(data_dir).join("page_mappings.json");
     let mapping_json_string = fs::read_to_string(&mapping_file_path)
         .map_err(|e| PageMappingError::UnableToRead(e.to_string()))?;
     let mappings: Vec<PageMapping> = serde_json::from_str(&mapping_json_string)
@@ -140,5 +141,4 @@ fn main() {
             }
         }
     }
-    // TODO: write to file
 }
