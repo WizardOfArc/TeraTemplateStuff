@@ -115,6 +115,7 @@ fn main() {
         }
     };
     tera.register_filter("ogham", tera_filters::to_ogham);
+    tera.register_filter("seanchlo", tera_filters::to_seanchlo);
     println!("Registered Templates:");
     for name in tera.get_template_names() {
         println!("{}", name);

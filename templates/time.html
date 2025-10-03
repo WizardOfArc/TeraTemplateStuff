@@ -7,15 +7,46 @@
     <span id="minute"></span>
     <span id="second"></span>
 </div>
+    <div id="ogham-switch-container">
+      <span id="ogham-label">{{ "ogham" | ogham | safe }}</span>
+      <div id="toggle-button-holder"><div class="slider"></div></div>
+      <span id="seanchlo-label">{{ "seanchloo" | seanchlo }}</span>
+    </div>
 <div id="countdown-container">
     {%- for countdown in countdowns %}
     <div id="{{ countdown.label }}-countdown">
         <span class="ogham">{{ countdown.gaeilge | ogham | safe }}</span
-        ><span id="{{ countdown.label }}-days"></span>
+        ><span class="seanchlo">{{ countdown.gaeilge | seanchlo }}</span><span id="{{ countdown.label }}-days"></span>
     </div>
     {%- endfor %}
 </div>
 <script>
+      let useOgham = true;
+
+      function toggleOgham() {
+        useOgham = !useOgham;
+        if(useOgham){
+            document.querySelectorAll('.ogham').forEach((item) => {
+                    item.classList.remove("hidden");
+            });
+            document.querySelectorAll('.seanchlo').forEach((item) => {
+                    item.classList.add("hidden");
+            });
+            document.querySelector('#toggle-button-holder').classList.add('ogham-selected');
+            document.querySelector('#toggle-button-holder').classList.remove('seanchlo-selected');
+
+        } else {
+            document.querySelectorAll('.ogham').forEach((item) => {
+                    item.classList.add("hidden");
+            });
+            document.querySelectorAll('.seanchlo').forEach((item) => {
+                    item.classList.remove("hidden");
+            });
+            document.querySelector('#toggle-button-holder').classList.remove('ogham-selected');
+            document.querySelector('#toggle-button-holder').classList.add('seanchlo-selected');
+
+        }
+      }
       // define some bits:
       let countDowns = [
       {% for countdown in countdowns %}
@@ -88,5 +119,7 @@
     }
 
     setInterval(tick, 1000);
+
+    document.querySelector("#toggle-button-holder").addEventListener("click", toggleOgham);
 </script>
 {% include "components/close_boiler_plate.html" %}

@@ -35,3 +35,27 @@ pub fn to_ogham<S: BuildHasher>(
     let out_value = format!("{}{}", start, new_value.replace("\"", ""));
     to_value(out_value).map_err(|e| Error::msg(e.to_string()))
 }
+
+pub fn to_seanchlo<S: BuildHasher>(
+    value: &Value,
+    _args: &HashMap<String, Value, S>,
+) -> Result<Value, Error> {
+    let working_value = value.to_string();
+    let new_value = working_value
+        .replace("aa", "\u{00E1}")
+        .replace("oo", "\u{00F3}")
+        .replace("uu", "\u{00FA}")
+        .replace("ee", "\u{00E9}")
+        .replace("ii", "\u{00ED}")
+        .replace("bh", "\u{1E03}")
+        .replace("ch", "\u{010B}")
+        .replace("dh", "\u{1E0B}")
+        .replace("fh", "\u{1E1F}")
+        .replace("gh", "\u{0121}")
+        .replace("mh", "\u{1E41}")
+        .replace("ph", "\u{1E57}")
+        .replace("sh", "\u{1E9B}")
+        .replace("th", "\u{1E6B}");
+    let out_value = format!("{}", new_value.replace("\"", ""));
+    to_value(out_value).map_err(|e| Error::msg(e.to_string()))
+}
