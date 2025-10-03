@@ -16,7 +16,7 @@
     {%- for countdown in countdowns %}
     <div id="{{ countdown.label }}-countdown">
         <span class="ogham">{{ countdown.gaeilge | ogham | safe }}</span
-        ><span class="seanchlo">{{ countdown.gaeilge | seanchlo }}</span><span id="{{ countdown.label }}-days"></span>
+        ><span class="seanchlo hidden">{{ countdown.gaeilge | seanchlo }}</span><span id="{{ countdown.label }}-days"></span>
     </div>
     {%- endfor %}
 </div>
