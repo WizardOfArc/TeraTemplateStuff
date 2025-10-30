@@ -74,7 +74,7 @@
         days_element.innerHTML = "Done";
         return;
       }
-      let days = Math.floor(timeDiff / millisInADay);
+      let days = Math.ceil(timeDiff / millisInADay);
       if (days < 1) {
         days_element.innerHTML = "&#128516;INNIU&#128516;";
         return;

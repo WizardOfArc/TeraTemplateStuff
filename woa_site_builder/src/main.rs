@@ -83,7 +83,7 @@ fn render_template(
         .map_err(|e| TemplateRenderError::UnableToCreateContext(e.to_string()))?;
     let rendered_output = tera
         .render(&mapping.template, &ctx)
-        .map_err(|e| TemplateRenderError::UnableToRenderTemplate(format!("{:?}", e.kind)))?;
+        .map_err(|e| TemplateRenderError::UnableToRenderTemplate(format!("{:?}", e)))?;
     let target_path = path::Path::new(target_dir).join(&mapping.template);
     match fs::write(&target_path, rendered_output) {
         Ok(()) => Ok(target_path.display().to_string()),
