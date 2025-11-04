@@ -10,11 +10,6 @@
   ],
   "countdowns": [
     {
-      "label": "Samhain",
-      "gaeilge": "samhain",
-      "deadline": "2025-10-31T07:00:00Z"
-    },
-    {
       "label": "last_day",
       "gaeilge": "mo laa deiridh",
       "deadline": "2025-11-22T13:00:00Z"
@@ -25,9 +20,19 @@
       "deadline": "2025-12-03T16:00:00Z"
     },
     {
+      "label": "christmas",
+      "gaeilge": "laa nollag",
+      "deadline": "2025-12-25T01:00:00Z"
+    },
+    {
       "label": "birthday",
       "gaeilge": "mo bhreithlaa",
-      "deadline": "2026-01-01T00:00:00Z"
+      "deadline": "2026-01-01T01:00:00Z"
+    },
+    {
+      "label": "jos_birthday",
+      "gaeilge": "breithlaa ioo",
+      "deadline": "2026-06-19T01:00:00Z"
     }
   ]
 }
