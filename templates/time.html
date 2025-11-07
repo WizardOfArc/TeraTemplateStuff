@@ -70,13 +70,13 @@
       let millisInAnHour = 60 * millisInAMinute;
       let millisInADay = 24 * millisInAnHour;
       let timeDiff = deadline - now;
-      if (timeDiff < 0) {
-        days_element.innerHTML = "Done";
+      let days = Math.ceil(timeDiff / millisInADay);
+      if (Math.abs(timeDiff) < millisInADay) {
+        days_element.innerHTML = "&#128516;INNIU&#128516;";
         return;
       }
-      let days = Math.ceil(timeDiff / millisInADay);
-      if (days < 1) {
-        days_element.innerHTML = "&#128516;INNIU&#128516;";
+      if (timeDiff < 0) {
+        days_element.innerHTML = "Done";
         return;
       }
       days_element.innerHTML = days;
