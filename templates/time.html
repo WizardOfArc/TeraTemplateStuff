@@ -52,7 +52,7 @@
       {% for countdown in countdowns %}
           {
             target: document.querySelector("#{{ countdown.label }}-days"),
-            start_time: new Date("{{ countdown.start_time }}")
+            start_time: new Date("{{ countdown.start_time }}"),
             end_time: new Date("{{ countdown.end_time }}")
           }{% if not loop.last %},{% endif %}
       {% endfor %}
