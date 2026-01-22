@@ -10,6 +10,30 @@
   ],
   "countdowns": [
     {
+      "label": "imbolc",
+      "gaeilge": "feeile briide",
+      "start_time": "2026-02-02T00:00:00Z",
+      "end_time": "2026-02-03T00:00:00Z"
+    },
+    {
+      "label": "paddys",
+      "gaeilge": "laa fheeile paadraig",
+      "start_time": "2026-03-17T00:00:00Z",
+      "end_time": "2026-03-18T00:00:00Z"
+    },
+    {
+      "label": "spring_equinox",
+      "gaeilge": "coonocht an earraigh",
+      "start_time": "2026-03-20T14:46:00Z",
+      "end_time": "2026-03-20T14:46:59Z"
+    },
+    {
+      "label": "bealtaine",
+      "gaeilge": "bealtaine",
+      "start_time": "2026-05-01T00:00:00Z",
+      "end_time": "2026-05-02T00:00:00Z"
+    },
+    {
       "label": "jos_birthday",
       "gaeilge": "breithlaa ioo",
       "start_time": "2026-06-19T00:00:00Z",
