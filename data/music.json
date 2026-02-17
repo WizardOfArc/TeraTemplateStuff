@@ -7,6 +7,7 @@
       {"label": "About", "url": "/about.html"},
       {"label": "The Grimoire", "url": "/grimoire.html"},
       {"label": "Blog", "url": "/blog.html"},
+    { "label": "Ogham", "url": "/ogham.html"},
       {"label": "Friends", "url": "/friends.html"},
       {"label": "Contact", "url": "/contact.html"},
       {"label": "Time", "url": "/time.html"}
