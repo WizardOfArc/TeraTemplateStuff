@@ -32,6 +32,10 @@
     "context_json_file": "spells.json"
   },
   {
+    "template": "spells/composing_a_melody_from_chords.html",
+    "context_json_file": "spells.json"
+  },
+  {
     "template": "spells/craft_and_chaos.html",
     "context_json_file": "spells.json"
   },
@@ -47,11 +51,6 @@
     "template": "spells/perpetual_canon.html",
     "context_json_file": "spells.json"
   },
-  { "template": "time.html",
-    "context_json_file": "time.json"
-  },
-  { "template": "ogham.html",
-    "context_json_file": "ogham.json"
-  }
-
+  { "template": "time.html", "context_json_file": "time.json" },
+  { "template": "ogham.html", "context_json_file": "ogham.json" }
 ]
