@@ -10,37 +10,5 @@
     { "label": "Friends", "url": "/friends.html" },
     { "label": "Contact", "url": "/contact.html" },
     { "label": "Time", "url": "/time.html" }
-  ],
-  "spells": [
-    {
-      "name": "Chords -> Melody",
-      "description": "Creating a melody over given chords",
-      "link": "composing_a_melody_from_chords"
-    },
-    {
-      "name": "Craft and Chaos",
-      "description": "A brain dump of songwriting thoughts and tips",
-      "link": "craft_and_chaos"
-    },
-    {
-      "name": "AA (Asynchronous Arrangement)",
-      "description": "Ways of working out the song arrangement when you can't get together at the same place and time",
-      "link": "asynchronous_arrangement"
-    },
-    {
-      "name": "Two-Voice Note Against Note",
-      "description": "How to harmonize a given melody in two voices - with the same rhythm",
-      "link": "note_against_note"
-    },
-    {
-      "name": "Diminutions",
-      "description": "Breaking a note into smaller notes",
-      "link": "diminutions"
-    },
-    {
-      "name": "Perpetual Canon",
-      "description": "Create a canon or round for given number of voices and time before each entry",
-      "link": "perpetual_canon"
-    }
   ]
 }

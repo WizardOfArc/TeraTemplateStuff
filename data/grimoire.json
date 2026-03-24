@@ -2,15 +2,20 @@
   "page": { "title": "The Grimoire", "css": "grimoire" },
 
   "footer_links": [
-    {"label": "About", "url": "/about.html"},
-    {"label": "Music", "url": "/music.html" },
-    {"label": "Ogham", "url": "/ogham.html"},
-    {"label": "Blog", "url": "/blog.html"},
-    {"label": "Friends", "url": "/friends.html"},
-    {"label": "Contact", "url": "/contact.html"},
-    {"label": "Time", "url": "/time.html"}
+    { "label": "About", "url": "/about.html" },
+    { "label": "Music", "url": "/music.html" },
+    { "label": "Ogham", "url": "/ogham.html" },
+    { "label": "Blog", "url": "/blog.html" },
+    { "label": "Friends", "url": "/friends.html" },
+    { "label": "Contact", "url": "/contact.html" },
+    { "label": "Time", "url": "/time.html" }
   ],
   "spells": [
+    {
+      "name": "Chords -> Melody",
+      "description": "Creating a melody over given chords",
+      "link": "composing_a_melody_from_chords"
+    },
     {
       "name": "Craft and Chaos",
       "description": "A brain dump of songwriting thoughts and tips",
