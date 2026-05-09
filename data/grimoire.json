@@ -12,6 +12,11 @@
   ],
   "spells": [
     {
+      "name": "Navigating The Six Strings",
+      "description": "A page of fret diagrams to get you the knowledge you need to get going - your cheat sheet for the gee-tar",
+      "link": "navigating_the_six_strings"
+    },
+    {
       "name": "Chords -> Melody",
       "description": "Creating a melody over given chords",
       "link": "composing_a_melody_from_chords"
