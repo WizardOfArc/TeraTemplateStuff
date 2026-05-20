@@ -10,7 +10,6 @@ pub fn to_ogham<S: BuildHasher>(
     let working_value = value.to_string();
     let new_value = working_value
         .replace("ng", "&#x168d;")
-        .replace("st", "&#x168e;")
         .replace("b", "&#x1681;")
         .replace("l", "&#x1682;")
         .replace("f", "&#x1683;")
