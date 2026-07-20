@@ -13,6 +13,11 @@
   "youtubelink": "https://youtube.com/playlist?list=PLtwvU1jSb6EjADJA0ie9hHtHxAlfEXJgU&si=ZtqmRfQtGZ2J7n_I",
   "spells": [
     {
+      "name": "The Four Elements",
+      "description": "There are four elements every band must have",
+      "link": "four_elements"
+    },
+    {
       "name": "Navigating The Six Strings",
       "description": "A page of fret diagrams to get you the knowledge you need to get going - your cheat sheet for the gee-tar",
       "link": "navigating_the_six_strings"
