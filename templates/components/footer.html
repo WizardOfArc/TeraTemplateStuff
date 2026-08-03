@@ -1,10 +1,53 @@
 <div class="footer">
     <a href="/">
-        <div class="woa-home-button"></div>
+        <style>
+            .woa-home-button {
+                width: 100px;
+                height: 75px;
+                margin: auto;
+                margin-bottom: 20px;
+                position: relative;
+                background-image: url("../images/woa_logo_only.svg");
+                @media (prefers-color-scheme: dark) {
+                    background-image: url("../images/woa_logo_only_light.svg");
+                }
+            }
+            .tooltiptext {
+            position: absolute;
+            width: 75px;
+            visibility: hidden;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-weight: bolder;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            z-index: 1;
+            }
+
+            .woa-home-button:hover .tooltiptext {
+            visibility: visible;
+            }
+            </style>
+        <div class="woa-home-button">
+            <span class="tooltiptext">Home</span>
+        </div>
     </a>
     <ul>
         {%- for link in footer_links %}
         <li><a class="footer-link" href="{{ link.url }}">{{ link.label }}</a></li>
         {%- endfor %}
     </ul>
+    <script>
+         let tooltiptext = document.querySelector(".tooltiptext");
+         let homebutton = document.querySelector(".woa-home-button");
+         homebutton.addEventListener("mousemove", event => {
+            tooltiptext.style.left = `${event.offsetX}px`;
+            tooltiptext.style.top = `${event.offsetY}px`;
+         });
+         homebutton.addEventListener("mouseenter", event => {
+            tooltiptext.style.left = `${event.offsetX}px`;
+            tooltiptext.style.top = `${event.offsetY}px`;
+         });
+    </script>
 </div>

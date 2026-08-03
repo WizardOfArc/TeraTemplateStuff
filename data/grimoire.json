@@ -6,9 +6,7 @@
     { "label": "Music", "url": "/music.html" },
     { "label": "Ogham", "url": "/ogham.html" },
     { "label": "Blog", "url": "/blog.html" },
-    { "label": "Friends", "url": "/friends.html" },
-    { "label": "Contact", "url": "/contact.html" },
-    { "label": "Time", "url": "/time.html" }
+    { "label": "Contact", "url": "/contact.html" }
   ],
   "youtubelink": "https://youtube.com/playlist?list=PLtwvU1jSb6EjADJA0ie9hHtHxAlfEXJgU&si=ZtqmRfQtGZ2J7n_I",
   "spells": [

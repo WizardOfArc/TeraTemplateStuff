@@ -1,9 +1,5 @@
 [
   {
-    "template": "friends.html",
-    "context_json_file": "friends.json"
-  },
-  {
     "template": "contact.html",
     "context_json_file": "contact.json"
   },
