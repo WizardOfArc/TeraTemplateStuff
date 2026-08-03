@@ -40,6 +40,10 @@
     "context_json_file": "spells.json"
   },
   {
+    "template": "spells/twelvespokedwheel.html",
+    "context_json_file": "spells.json"
+  },
+  {
     "template": "spells/craft_and_chaos.html",
     "context_json_file": "spells.json"
   },

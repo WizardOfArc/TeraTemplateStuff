@@ -21,6 +21,11 @@
       "link": "navigating_the_six_strings"
     },
     {
+      "name": "The Twelve-Spoked Wheel",
+      "description": "The 12 spoked wheel diagram to use for calculating intervals and visualizing harmony",
+      "link": "twelvespokedwheel"
+    },
+    {
       "name": "Chords -> Melody",
       "description": "Creating a melody over given chords",
       "link": "composing_a_melody_from_chords"
