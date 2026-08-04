@@ -1,4 +1,5 @@
 use serde::Deserialize;
+use serde::Serialize;
 use serde_json::Value;
 use std::env;
 use std::fmt;
@@ -25,6 +26,52 @@ impl fmt::Display for PageMappingError {
             }
         }
     }
+}
+
+#[derive(Debug)]
+enum WheelDataReadingError {
+    UnableToRead(String),
+    UnableToParse(String),
+    UnableToWriteToJSON(String),
+    UnableToSaveToFile(String),
+}
+
+impl fmt::Display for WheelDataReadingError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            WheelDataReadingError::UnableToRead(message) => {
+                write!(f, "Could not read wheel.json file: {}", message)
+            }
+            WheelDataReadingError::UnableToParse(message) => {
+                write!(f, "Could not parse JSON into Wheel Data: {}", message)
+            }
+            WheelDataReadingError::UnableToWriteToJSON(message) => {
+                write!(f, "Could not convert Wheel Data into JSON: {}", message)
+            }
+            WheelDataReadingError::UnableToSaveToFile(message) => {
+                write!(f, "Could not write to wheel.json file: {}", message)
+            }
+        }
+    }
+}
+
+#[derive(Deserialize, Serialize)]
+struct PageData {
+    title: String,
+    css: String,
+}
+
+#[derive(Deserialize, Serialize)]
+struct FooterLink {
+    label: String,
+    url: String,
+}
+
+#[derive(Deserialize, Serialize)]
+struct WheelData {
+    page: PageData,
+    footer_links: Vec<FooterLink>,
+    scales: Vec<String>,
 }
 
 #[derive(Deserialize)]
@@ -68,6 +115,22 @@ impl fmt::Display for TemplateRenderError {
     }
 }
 
+fn generate_12tone_recurse(string_so_far: String, depth: u32, result: &mut Vec<String>) {
+    if depth >= 12 {
+        result.push(string_so_far.clone());
+        return;
+    }
+    generate_12tone_recurse(format!("{}0", string_so_far), depth + 1, result);
+    generate_12tone_recurse(format!("{}1", string_so_far), depth + 1, result);
+}
+
+fn generate_12tone_list() -> Vec<String> {
+    let mut result: Vec<String> = Vec::new();
+    //  do recursive stuff
+    generate_12tone_recurse("".to_string(), 0, &mut result);
+    result
+}
+
 fn render_template(
     mapping: &PageMapping,
     tera: &Tera,
@@ -102,6 +165,24 @@ fn load_page_mapping(data_dir: &str) -> Result<Vec<PageMapping>, PageMappingErro
     Ok(mappings)
 }
 
+fn load_wheel_json(data_dir: &str) -> Result<WheelData, WheelDataReadingError> {
+    let wheel_data_path = path::Path::new(data_dir).join("wheel.json");
+    let wheel_data_json_string = fs::read_to_string(&wheel_data_path)
+        .map_err(|e| WheelDataReadingError::UnableToRead(e.to_string()))?;
+    let wheel_data: WheelData = serde_json::from_str(&wheel_data_json_string)
+        .map_err(|e| WheelDataReadingError::UnableToParse(e.to_string()))?;
+    Ok(wheel_data)
+}
+
+fn save_wheel_json(wheel: &WheelData, data_dir: &str) -> Result<(), WheelDataReadingError> {
+    let destination = path::Path::new(data_dir).join("wheel.json");
+    let json_string = serde_json::to_string(wheel)
+        .map_err(|e| WheelDataReadingError::UnableToWriteToJSON(e.to_string()))?;
+    std::fs::write(destination, json_string)
+        .map_err(|e| WheelDataReadingError::UnableToSaveToFile(e.to_string()))?;
+    Ok(())
+}
+
 fn main() {
     let templates_dir = env::var("TERA_TEMPLATES").expect("TERA_TEMPLATES must be set");
     let template_blob = format!("{}/**/*.html", templates_dir);
@@ -129,6 +210,23 @@ fn main() {
         }
     };
 
+    // prepare scale list for wheel.json
+    let wheel_data = load_wheel_json(&data_dir);
+    match wheel_data {
+        Err(e) => {
+            println!("Wheel data did not load: [{}]", e);
+        }
+        Ok(mut wheel) => {
+            wheel.scales.clear();
+            for scale in generate_12tone_list() {
+                wheel.scales.push(scale);
+            }
+            match save_wheel_json(&wheel, &data_dir) {
+                Ok(_) => println!("wheel data updated"),
+                Err(e) => println!("Something happend with updating wheel data:{}", e),
+            }
+        }
+    }
     println!("Rendering...");
     for mapping in mappings.iter() {
         match render_template(mapping, &tera, &target_dir, &data_dir) {
