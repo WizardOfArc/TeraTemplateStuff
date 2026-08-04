@@ -1,0 +1,248 @@
+{% include "components/open_boiler_plate.html" %}
+<h1>The Twelve-Spoked Wheel</h1>
+<h2 style="font-style: italic; text-align: center;margin: auto;">A way of visualizing and calculating intervals</h2>
+<label for="scales">Select a Scale:</label>
+<select name="scales" id="scales">
+    {%- for scale in scales %}
+    <option value="{{scale}}">{{scale}}</option>
+    {%- endfor %}
+</select>
+<style>
+    .smalltext{
+        font-size: 10px;
+    }
+    .smallertext{
+        font-size: 8px;
+    }
+    .thewheel {
+        background-image: url("/images/parchment.png");
+        background-size: cover;
+    }
+    .tritone {
+        stroke: red;
+    }
+    .b2_M7 {
+        stroke: black;
+    }
+    .M2_b7 {
+        stroke: violet;
+    }
+    .b3_M6 {
+        stroke: green;
+    }
+    .M3_b6 {
+        stroke: #00ff00;
+    }
+    .P4_P5 {
+        stroke: blue;
+    }
+    #scale_display {
+        margin:auto;
+        width: 150px;
+        height: 75px;
+    }
+
+</style>
+<div id="scale_display"></div>
+<svg class="thewheel" xmlns="http://www.w3.org/200/svg" viewBox="0 0 400 400">
+  <circle cx="200" cy="80" r="70" fill="none" stroke="#330033" />
+  <path id="000001000001" class="tritone" d="M200 10 L 200 150 Z" />
+  <path id="000010000010" class="tritone" d="M235 19.3782 L 165 140.6218 Z" />
+  <path id="000100000100" class="tritone" d="M260.6218 45 L 139.3782 115 Z" />
+  <path id="001000001000" class="tritone" d="M270 80 L 130 80 Z" />
+  <path id="010000010000" class="tritone" d="M260.6218 115 L 139.3782 45 Z" />
+  <path id="100000100000" class="tritone" d="M235 140.6218 L 165 19.3782 Z" />
+
+  <path id="000000000011" class="b2_M7" d="M200 10 L 235 19.3782 Z" />
+  <path id="000000000110" class="b2_M7" d="M260.6218 45 L 235 19.3782 Z" />
+  <path id="000000001100" class="b2_M7" d="M260.6218 45 L 270 80 Z" />
+  <path id="000000011000" class="b2_M7" d="M260.6218 115 L 270 80 Z" />
+  <path id="000000110000" class="b2_M7" d="M260.6218 115 L 235 140.6218 Z" />
+  <path id="000001100000" class="b2_M7" d="M200 150 L 235 140.6218 Z" />
+  <path id="000011000000" class="b2_M7" d="M200 150 L 165 140.6218 Z" />
+  <path id="000110000000" class="b2_M7" d="M139.3782 115 L 165 140.6218 Z" />
+  <path id="001100000000" class="b2_M7" d="M139.3782 115 L 130 80 Z" />
+  <path id="011000000000" class="b2_M7" d="M139.3782 45 L 130 80 Z" />
+  <path id="110000000000" class="b2_M7" d="M139.3782 45 L 165 19.3782 Z" />
+  <path id="100000000001" class="b2_M7" d="M200 10 L 165 19.3782 Z" />
+
+  <path id="000000000101" class="M2_b7" d="M200 10 L 260.6218 45 Z" />
+  <path id="000000010100" class="M2_b7" d="M260.6218 115 L 260.6218 45 Z" />
+  <path id="000001010000" class="M2_b7" d="M260.6218 115 L 200 150 Z" />
+  <path id="000101000000" class="M2_b7" d="M139.3782 115 L 200 150 Z" />
+  <path id="010100000000" class="M2_b7" d="M139.3782 115 L 139.3782 45 Z" />
+  <path id="010000000001" class="M2_b7" d="M200 10 L 139.3782 45 Z" />
+  <path id="000000001010" class="M2_b7" d="M235 19.3782 L 270 80 Z" />
+  <path id="000000101000" class="M2_b7" d="M235 140.6218 L 270 80 Z" />
+  <path id="000010100000" class="M2_b7" d="M235 140.6218 L 165 140.6218 Z" />
+  <path id="001010000000" class="M2_b7" d="M130 80 L 165 140.6218 Z" />
+  <path id="101000000000" class="M2_b7" d="M130 80 L 165 19.3782 Z" />
+  <path id="100000000010" class="M2_b7" d="M235 19.3782 L 165 19.3782 Z" />
+
+  <path id="000000001001" class="b3_M6" d="M200 10 L 270 80 Z" />
+  <path id="000001001000" class="b3_M6" d="M200 150 L 270 80 Z" />
+  <path id="001001000000" class="b3_M6" d="M200 150 L 130 80 Z" />
+  <path id="001000000001" class="b3_M6" d="M200 10 L 130 80 Z" />
+  <path id="000000010010" class="b3_M6" d="M235 19.3782 L 260.6218 115 Z" />
+  <path id="000010010000" class="b3_M6" d="M165 140.6218 L 260.6218 115 Z" />
+  <path id="010010000000" class="b3_M6" d="M165 140.6218 L 139.3782 45 Z" />
+  <path id="010000000010" class="b3_M6" d="M235 19.3782 L 139.3782 45 Z" />
+  <path id="000000100100" class="b3_M6" d="M260.6218 45 L 235 140.6218 Z" />
+  <path id="000100100000" class="b3_M6" d="M139.3782 115 L 235 140.6218 Z" />
+  <path id="100100000000" class="b3_M6" d="M139.3782 115 L 165 19.3782 Z" />
+  <path id="100000000100" class="b3_M6" d="M260.6218 45 L 165 19.3782 Z" />
+
+  <path id="000000010001" class="M3_b6" d="M200 10 L 260.6218 115 Z" />
+  <path id="000100010000" class="M3_b6" d="M139.3782 115 L 260.6218 115 Z" />
+  <path id="000100000001" class="M3_b6" d="M139.3782 115 L 200 10 Z" />
+  <path id="000000100010" class="M3_b6" d="M235 19.3782 L 235 140.6218 Z" />
+  <path id="001000100000" class="M3_b6" d="M130 80 L 235 140.6218 Z" />
+  <path id="001000000010" class="M3_b6" d="M130 80 L 235 19.3782 Z" />
+  <path id="000001000100" class="M3_b6" d="M260.6218 45 L 200 150 Z" />
+  <path id="010001000000" class="M3_b6" d="M139.3782 45 L 200 150 Z" />
+  <path id="010000000100" class="M3_b6" d="M139.3782 45 L 260.6218 45 Z" />
+  <path id="000010001000" class="M3_b6" d="M270 80 L 165 140.6218 Z" />
+  <path id="100010000000" class="M3_b6" d="M165 19.3782 L 165 140.6218 Z" />
+  <path id="100000001000" class="M3_b6" d="M165 19.3782 L 270 80 Z" />
+
+  <path id="000000100001" class="P4_P5" d="M200 10 L 235 140.6218 Z" />
+  <path id="010000100000" class="P4_P5" d="M139.3782 45 L 235 140.6218 Z" />
+  <path id="010000001000" class="P4_P5" d="M139.3782 45 L 270 80 Z" />
+  <path id="000100001000" class="P4_P5" d="M139.3782 115 L 270 80 Z" />
+  <path id="000100000010" class="P4_P5" d="M139.3782 115 L 235 19.3782 Z" />
+  <path id="000001000010" class="P4_P5" d="M200 150 L 235 19.3782 Z" />
+  <path id="100001000000" class="P4_P5" d="M200 150 L 165 19.3782 Z" />
+  <path id="100000010000" class="P4_P5" d="M260.6218 115 L 165 19.3782 Z" />
+  <path id="001000010000" class="P4_P5" d="M260.6218 115 L 130 80 Z" />
+  <path id="001000000100" class="P4_P5" d="M260.6218 45 L 130 80 Z" />
+  <path id="000010000100" class="P4_P5" d="M260.6218 45 L 165 140.6218 Z" />
+  <path id="000010000001" class="P4_P5" d="M200 10 L 165 140.6218 Z" />
+
+  <g id="000000000001">
+    <circle cx="200" cy="10" r="5" fill="red" stroke="#330033" />
+    <text x="197.3" y="13.5" fill="white" class="smalltext">0</text>
+  </g>
+  <g id="000000000010">
+    <circle cx="235" cy="19.3782" r="5" fill="#ff3f00" stroke="#330033" />
+    <text x="232.3" y="22.8782" fill="white" class="smalltext">1</text>
+  </g>
+  <g id="000000000100">
+    <circle cx="260.6218" cy="45" r="5" fill="#f07f00" stroke="#330033" />
+    <text x="257.9218" y="48.3" fill="white" class="smalltext">2</text>
+  </g>
+  <g id="000000001000">
+    <circle cx="270" cy="80" r="5" fill="orange" stroke="#330033" />
+    <text x="267.3" y="83.5" fill="white" class="smalltext">3</text>
+  </g>
+  <g id="000000010000">
+    <circle cx="260.6218" cy="115" r="5" fill="yellow" stroke="#330033" />
+    <text x="257.9218" y="118.5" fill="#330033" class="smalltext">4</text>
+  </g>
+  <g id="000000100000">
+    <circle cx="235" cy="140.6218" r="5" fill="#afef00" stroke="#330033" />
+    <text x="232.3" y="144.1218" fill="#330033" class="smalltext">5</text>
+  </g>
+  <g id="000001000000">
+    <circle cx="200" cy="150" r="5" fill="green" stroke="#330033" />
+    <text x="197.3" y="153.5" fill="white" class="smalltext">6</text>
+  </g>
+  <g id="000010000000">
+    <circle cx="165" cy="140.6218" r="5" fill="teal" stroke="#330033" />
+    <text x="162.3" y="144.1218" fill="white" class="smalltext">7</text>
+  </g>
+  <g id="000100000000">
+    <circle cx="139.3782" cy="115" r="5" fill="#007fff" stroke="#330033" />
+    <text x="136.6782" y="118.5" fill="white" class="smalltext">8</text>
+  </g>
+  <g id="001000000000">
+    <circle cx="130" cy="80" r="5" fill="blue" stroke="#330033" />
+    <text x="127.3" y="83.5" fill="white" class="smalltext">9</text>
+  </g>
+  <g id="010000000000">
+    <circle cx="139.3782" cy="45" r="5" fill="purple" stroke="#330033" />
+    <text x="134.5" y="48" fill="white" class="smallertext">10</text>
+  </g>
+  <g id="100000000000">
+    <circle cx="165" cy="19.3782" r="5" fill="violet" stroke="#330033" />
+    <text x="160.6" y="22" fill="white" class="smallertext">11</text>
+  </g>
+</svg>
+<script>
+    let pathIds = [
+        '000000000011','000000000110','000000001010','000000010010','000000100010','000001000010','000010000010','000100000010','001000000010','010000000010','100000000010',
+        '000000000101','000000001100','000000010100','000000100100','000001000100','000010000100','000100000100','001000000100','010000000100','100000000100',
+        '000000001001','000000011000','000000101000','000001001000','000010001000','000100001000','001000001000','010000001000','100000001000',
+        '000000010001','000000110000','000001010000','000010010000','000100010000','001000010000','010000010000','100000010000',
+        '000000100001','000001100000','000010100000','000100100000','001000100000','010000100000','100000100000',
+        '000001000001','000011000000','000101000000','001001000000','010001000000','100001000000',
+        '000010000001','000110000000','001010000000','010010000000','100010000000',
+        '000100000001','001100000000','010100000000','100100000000',
+        '001000000001','011000000000','101000000000',
+        '010000000001','110000000000',
+        '100000000001',
+
+    ];
+
+    function twelveAnding(a, b){
+        var output = "";
+       for(var i=0; i < 12; i++){
+          if(a[i] == '1' && b[i] == '1'){
+              output += "" + "1";
+          } else {
+              output += "" + "0";
+          }
+       } 
+       return output;
+    }
+
+    function doesItIntersect(a, b, isPath=false){
+        if(isPath){
+            return twelveAnding(a,b) === a;
+        }
+        return twelveAnding(a,b) !== "000000000000";
+    }
+
+    let nodeIds = [
+        '000000000001',
+        '000000000010',
+        '000000000100',
+        '000000001000',
+        '000000010000',
+        '000000100000',
+        '000001000000',
+        '000010000000',
+        '000100000000',
+        '001000000000',
+        '010000000000',
+        '100000000000',
+    ];
+    let scaleSelector = document.getElementById("scales");
+    let scaleDisplay = document.getElementById("scale_display");
+
+    document.addEventListener("DOMContentLoaded",function(){
+        scaleSelector.addEventListener("change", (event) => {
+            let id = scaleSelector.value;
+            scaleDisplay.innerHTML = `${id}`;
+            for(gId of nodeIds){
+                let note_node = document.getElementById(`${gId}`);
+                if(doesItIntersect(gId, id)){
+                    note_node.style.visibility = "visible";
+                } else {
+                    note_node.style.visibility = "hidden";
+                }
+            }
+            for(pId of pathIds){
+                let intervalPath = document.getElementById(`${pId}`);
+                if(doesItIntersect(pId, id, true)){
+                    intervalPath.style.visibility = "visible";
+                } else {
+                    intervalPath.style.visibility = "hidden";
+                }
+            }
+        } );
+    });
+
+
+   
+</script>
+{% include "components/close_boiler_plate.html" %}
