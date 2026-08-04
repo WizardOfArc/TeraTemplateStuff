@@ -1,13 +1,79 @@
 {% include "components/open_boiler_plate.html" %}
 <h1>The Twelve-Spoked Wheel</h1>
-<h2 style="font-style: italic; text-align: center;margin: auto;">A way of visualizing and calculating intervals</h2>
-<label for="scales">Select a Scale:</label>
-<select name="scales" id="scales">
-    {%- for scale in scales %}
-    <option value="{{scale}}">{{scale}}</option>
-    {%- endfor %}
-</select>
+<h2 >A way of visualizing and calculating intervals</h2>
+<div id="all-selectors">
+    <label for="note-0">C (0)</label>
+    <select class="note-selector" name="note-0" id="note-0">
+        <option value="000000000001">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-1">C#/Db (1)</label>
+    <select class="note-selector" name="note-1" id="note-1">
+        <option value="000000000010">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-2">D (2)</label>
+    <select class="note-selector" name="note-2" id="note-2">
+        <option value="000000000100">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-3">D#/Eb (3)</label>
+    <select class="note-selector" name="note-3" id="note-3">
+        <option value="000000001000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-4">E (4)</label>
+    <select class="note-selector" name="note-4" id="note-4">
+        <option value="000000010000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-5">F (5)</label>
+    <select class="note-selector" name="note-5" id="note-5">
+        <option value="000000100000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-6">F#/Gb (6)</label>
+    <select class="note-selector" name="note-6" id="note-6">
+        <option value="000001000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-7">G (7)</label>
+    <select class="note-selector" name="note-7" id="note-7">
+        <option value="000010000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-8">G#/Ab (8)</label>
+    <select class="note-selector" name="note-8" id="note-8">
+        <option value="000100000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-9">A (9)</label>
+    <select class="note-selector" name="note-9" id="note-9">
+        <option value="001000000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-10">A#/Bb (10)</label>
+    <select class="note-selector" name="note-10" id="note-10">
+        <option value="010000000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+    <label for="note-11">B (11)</label>
+    <select class="note-selector" name="note-11" id="note-11">
+        <option value="100000000000">Yes</option>
+        <option value="000000000000">No</option>
+    </select>
+</div>
 <style>
+    #all-selectors {
+        text-align: center;
+        margin: auto;
+    }
+    h2 {
+        margin: auto;
+        margin-bottom: 20px;
+        font-style: italic; 
+        text-align: center;
+    }
     .smalltext{
         font-size: 10px;
     }
@@ -20,31 +86,54 @@
     }
     .tritone {
         stroke: red;
+        fill: red;
     }
     .b2_M7 {
         stroke: black;
+        fill: black;
     }
     .M2_b7 {
         stroke: violet;
+        fill: violet;
     }
     .b3_M6 {
         stroke: green;
+        fill: green;
     }
     .M3_b6 {
         stroke: #00ff00;
+        fill: #00ff00;
     }
     .P4_P5 {
         stroke: blue;
+        fill: blue;
     }
     #scale_display {
         margin:auto;
-        width: 150px;
+        margin-top: 20px;
+        text-align: center;
         height: 75px;
     }
 
 </style>
 <div id="scale_display"></div>
 <svg class="thewheel" xmlns="http://www.w3.org/200/svg" viewBox="0 0 400 400">
+
+  <rect class="tritone" x="30" y="10" width="50" height="15" />
+  <text class="tritone" x="90" y="25">Tritone</text>
+  <rect class="b2_M7" x="310" y="10" width="50" height="15" />
+  <text class="b2_M7" x="260" y="25">b2/M7</text>
+
+  <rect class="P4_P5" x="20" y="50" width="50" height="15" />
+  <text class="P4_P5" x="80" y="65">P4/P5</text>
+  <rect class="M2_b7" x="325" y="50" width="50" height="15" />
+  <text class="M2_b7" x="275" y="65">M2/b7</text>
+
+  <rect class="M3_b6" x="20" y="90" width="50" height="15" />
+  <text class="M3_b6" x="80" y="105">M3/b6</text>
+  <rect class="b3_M6" x="325" y="90" width="50" height="15" />
+  <text class="b3_M6" x="275" y="105">b3/M6</text>
+
   <circle cx="200" cy="80" r="70" fill="none" stroke="#330033" />
   <path id="000001000001" class="tritone" d="M200 10 L 200 150 Z" />
   <path id="000010000010" class="tritone" d="M235 19.3782 L 165 140.6218 Z" />
@@ -182,7 +271,7 @@
         '100000000001',
 
     ];
-
+    var selected_scale = "000000000000"; 
     function twelveAnding(a, b){
         var output = "";
        for(var i=0; i < 12; i++){
@@ -195,13 +284,40 @@
        return output;
     }
 
-    function doesItIntersect(a, b, isPath=false){
+    function doesItIntersect(a, isPath=false){
+        var b = selected_scale;
         if(isPath){
             return twelveAnding(a,b) === a;
         }
         return twelveAnding(a,b) !== "000000000000";
     }
 
+    function union(toUnion){
+        var out = "";
+        for(var i=0; i < 12; i++){
+            if(toUnion.some((s) => s[i] === "1")){
+                out += "" + "1";
+            } else {
+                out += "" + "0";
+            }
+        }
+        return out;
+    }
+
+    let noteMapping = [
+        "C",
+        "C#/Db",
+        "D",
+        "D#/Eb",
+        "E",
+        "F",
+        "F#/Gb",
+        "G",
+        "G#/Ab",
+        "A",
+        "A#/Bb",
+        "B"
+    ];
     let nodeIds = [
         '000000000001',
         '000000000010',
@@ -216,30 +332,45 @@
         '010000000000',
         '100000000000',
     ];
-    let scaleSelector = document.getElementById("scales");
-    let scaleDisplay = document.getElementById("scale_display");
+    let noteSelectors = document.getElementsByClassName("note-selector");
 
     document.addEventListener("DOMContentLoaded",function(){
-        scaleSelector.addEventListener("change", (event) => {
-            let id = scaleSelector.value;
-            scaleDisplay.innerHTML = `${id}`;
-            for(gId of nodeIds){
-                let note_node = document.getElementById(`${gId}`);
-                if(doesItIntersect(gId, id)){
-                    note_node.style.visibility = "visible";
-                } else {
-                    note_node.style.visibility = "hidden";
+        for( ns of noteSelectors) {
+            ns.addEventListener("change",(event) => {
+                let selected = [];
+                for (ns of noteSelectors) {
+                    selected.push(ns.value);
                 }
-            }
-            for(pId of pathIds){
-                let intervalPath = document.getElementById(`${pId}`);
-                if(doesItIntersect(pId, id, true)){
-                    intervalPath.style.visibility = "visible";
-                } else {
-                    intervalPath.style.visibility = "hidden";
+                selected_scale = union(selected);
+                for(gId of nodeIds){
+                    let note_node = document.getElementById(`${gId}`);
+                    if(doesItIntersect(gId)){
+                        note_node.style.visibility = "visible";
+                    } else {
+                        note_node.style.visibility = "hidden";
+                    }
                 }
-            }
-        } );
+                for(pId of pathIds){
+                    let intervalPath = document.getElementById(`${pId}`);
+                    if(doesItIntersect(pId, true)){
+                        intervalPath.style.visibility = "visible";
+                    } else {
+                        intervalPath.style.visibility = "hidden";
+                    }
+                }
+                var toDisplay = [];
+                for(var j=11; j >= 0; j--){
+                    var noteNameIdx = 11 - j;
+                    var character = selected_scale[j];
+                    if(character == "1"){
+                        var noteName = noteMapping[noteNameIdx];
+                        toDisplay.push(noteName);
+                    }
+                }
+                document.querySelector("#scale_display").innerHTML = toDisplay.join(",");
+            });
+        }
+
     });
 
 
