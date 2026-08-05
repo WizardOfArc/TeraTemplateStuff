@@ -5,7 +5,6 @@
     { "label": "About", "url": "/about.html" },
     { "label": "Music", "url": "/music.html" },
     { "label": "Blog", "url": "/blog.html" },
-    { "label": "Ogham", "url": "/ogham.html" },
     { "label": "The Grimoire", "url": "/grimoire.html" },
     { "label": "Contact", "url": "/contact.html" }
   ]
