@@ -9,6 +9,11 @@
   "youtubelink": "https://youtube.com/playlist?list=PLtwvU1jSb6EjADJA0ie9hHtHxAlfEXJgU&si=ZtqmRfQtGZ2J7n_I",
   "spells": [
     {
+      "name":"Conjuring Kindred Spirits",
+      "description": "A proposal for finding musicians who aren't the mainstream",
+      "link":"conjuring_helpers"
+    },
+    {
       "name": "The Twelve-Spoked Wheel",
       "description": "The 12 spoked wheel diagram to use for calculating intervals and visualizing harmony",
       "link": "twelvespokedwheel"

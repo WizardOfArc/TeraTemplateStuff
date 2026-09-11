@@ -24,6 +24,10 @@
     "context_json_file": "grimoire.json"
   },
   {
+    "template": "spells/conjuring_helpers.html",
+    "context_json_file": "spells.json"
+  },
+  {
     "template": "spells/asynchronous_arrangement.html",
     "context_json_file": "spells.json"
   },
