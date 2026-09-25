@@ -32,6 +32,10 @@
     "context_json_file": "spells.json"
   },
   {
+    "template": "spells/chromatic_lattice.html",
+    "context_json_file": "spells.json"
+  },
+  {
     "template": "spells/asynchronous_arrangement.html",
     "context_json_file": "spells.json"
   },
