@@ -14,6 +14,11 @@
       "link":"conjuring_helpers"
     },
     {
+      "name":"Chromatic Lattice",
+      "description": "A diagram for changing chords one semitone at a time",
+      "link":"chromatic_lattice"
+    },
+    {
       "name": "The Twelve-Spoked Wheel",
       "description": "The 12 spoked wheel diagram to use for calculating intervals and visualizing harmony",
       "link": "twelvespokedwheel"
