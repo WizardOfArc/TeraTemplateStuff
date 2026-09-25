@@ -4,6 +4,10 @@
     "context_json_file": "contact.json"
   },
   {
+    "template": "counties.html",
+    "context_json_file": "counties.json"
+  },
+  {
     "template": "music.html",
     "context_json_file": "music.json"
   },

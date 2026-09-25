@@ -27,7 +27,7 @@ impl fmt::Display for PageMappingError {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 struct PageMapping {
     template: String,
     context_json_file: String,
@@ -131,6 +131,7 @@ fn main() {
 
     println!("Rendering...");
     for mapping in mappings.iter() {
+        println!("{:?} ?", &mapping);
         match render_template(mapping, &tera, &target_dir, &data_dir) {
             Ok(outputted) => println!("{} ok", outputted),
             Err(e) => {
