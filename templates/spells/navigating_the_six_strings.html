@@ -1,37 +1,25 @@
 {% include "components/open_boiler_plate.html" %}
+<style>
+  .cowboy-chord-entry {
+      display: inline-block;
+  }
+  .mode-section {
+      border: 1px solid var(--primary);
+  }
+</style>
 <h1>The "Cowboy" Chords</h1>
-<h2>Major Chords</h2>
-<table>
-    <tr>
-        <td style="text-align: center">E</td>
-        <td style="text-align: center">A</td>
-        <td style="text-align: center">D</td>
-        <td style="text-align: center">G</td>
-        <td style="text-align: center">C</td>
-    </tr>
-    <tr>
-        <td><img src="/images/guitarmaps/e_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/a_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/d_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/g_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/c_cowboy.svg" /></td>
-    </tr>
-</table>
+{% for mode in modes %}
+<div class="mode-section">
+<h2>{{mode.name}} Chords</h2>
+  {% for chord in mode.chords %}
+<div class="cowboy-chord-entry">
+    <h3 style="text-align: center;">{{chord.name}}</h3>
+    <img src="/images/guitarmaps/{{chord.abbreviation}}_cowboy.svg" />
+</div>
+  {% endfor %}
+</div>
 <hr />
-<h2>Minor Chords</h2>
-<table>
-    <tr>
-        <td style="text-align: center">E minor</td>
-        <td style="text-align: center">A minor</td>
-        <td style="text-align: center">D minor</td>
-    </tr>
-    <tr>
-        <td><img src="/images/guitarmaps/em_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/am_cowboy.svg" /></td>
-        <td><img src="/images/guitarmaps/dm_cowboy.svg" /></td>
-    </tr>
-</table>
-<hr />
+{% endfor %}
 <hr />
 <h1>One String</h1>
 <table>

@@ -49,7 +49,7 @@
   },
   {
     "template": "spells/navigating_the_six_strings.html",
-    "context_json_file": "spells.json"
+    "context_json_file": "six_strings.json"
   },
   {
     "template": "spells/four_elements.html",
